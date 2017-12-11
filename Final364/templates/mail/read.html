@@ -1,0 +1,9 @@
+<h1>Your Read List</h1>
+
+{% for book in read %}
+
+<p><b>{{book.Book.title}}</b></p>
+<p>{{book.Book.descr}}</p>
+<br/><br/>
+
+{% endfor %}

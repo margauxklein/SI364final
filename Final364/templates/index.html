@@ -1,0 +1,31 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<form method="POST" action = "/EBookResults">
+	{{ form.hidden_tag() }}
+	{{ form.text.label }} {{ form.text() }}
+	{{ form.submit() }}
+</form>
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+<a href="/lists">Click here to see your lists</a>
+<br><br>
+<button onclick="getCounts()">How many items in my lists?</button>
+<script>
+function getCounts () {
+	var request = $.ajax({
+  url: "/list_item_counts",
+  method: "GET",
+  dataType: "json"
+});
+ 
+request.done(function( counts ) {
+  alert("You have " + counts.readListCount + " item in your read list and " + counts.toReadListCount + " in your to-read list.")
+});
+	
+}
+</script>

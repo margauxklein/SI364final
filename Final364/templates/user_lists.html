@@ -1,0 +1,32 @@
+<div>
+{% for message in get_flashed_messages() %}
+<b><em>{{ message }}</b></em>
+{% endfor %}
+</div>
+
+<h2>Read List</h2>
+<form method="POST" action="/email/read">
+	<button type="submit">Email Me my Read List</button>
+</form>
+
+{% for book in read %}
+
+<p><b>{{book.Book.title}}</b></p>
+<p>{{book.Book.descr}}</p>
+<br/><br/>
+
+{% endfor %}
+
+<h2>To Read List</h2>
+
+<form method="POST" action="/email/toRead">
+	<button type="submit">Email Me my To Read List</button>
+</form>
+
+{% for book in toRead %}
+
+<p><b>{{book.Book.title}}</b></p>
+<p>{{book.Book.descr}}</p>
+<br/><br/>
+
+{% endfor %}
